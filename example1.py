@@ -20,22 +20,29 @@ def argmax(values):
     vmax : int or float
         Maximum value
     """
-    vmax = max(values)
-    imax = values.index(vmax)
-    return(imax, vmax)
-
+    if(len(values) == 0):
+        raise ValueError('No values found, check if the list provided is not empty')
+    else:
+        vmax = max(values)
+        imax = values.index(vmax)
+        return(imax, vmax)
     # ADD YOUR IMPLEMENTATION HERE
+
 
 
 def main():
 
     # Create list of values to test argmax()
     values = [2, 3, -1, 7, 4]
+    
 
     # Use argmax() to locale the maximum
-    (i, max) = argmax(values)
-    # ADD YOUR IMPLEMENTATION HERE
-    print("The max value is at {} index and has value {}".format(i, max))
+    try:
+        (i, max) = argmax(values)
+        print("The max value is at index {} and has value {}".format(i, max))
+    except ValueError as ve:
+        print(ve)
+
 
 if __name__ == '__main__':
     main()
